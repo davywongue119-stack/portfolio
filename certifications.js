@@ -5,7 +5,7 @@
    1. Déposez son aperçu (JPG/PNG optimisé) et/ou son PDF dans
       le dossier  assets/certifications/
    2. Ajoutez une entrée ci-dessous.
- 
+  
    Champs :
    title    : intitulé exact (ne pas modifier l'original)
    issuer   : organisme émetteur
@@ -15,9 +15,8 @@
    pdf      : nom du fichier PDF (ouvre dans un nouvel onglet)
    verify   : lien officiel de vérification (uniquement s'il existe)
    status   : "en-cours" pour les formations en cours
-   available: false  →  espace réservé flouté
-              "Certificat non encore disponible, pour des raisons
-               indépendantes de notre volonté."
+   preview  : true   →  image flue (image représentative, pas la vraie certif)
+              false  →  image nette (vraie certif disponible)
    ============================================================ */
 
 var CERTIFICATIONS = [
@@ -28,7 +27,7 @@ var CERTIFICATIONS = [
     image: "bloomberg-bmc.jpg",
     pdf: "",
     verify: "",
-    available: false
+    preview: true
   },
   {
     title: "Introduction to Financial Accounting",
@@ -37,7 +36,7 @@ var CERTIFICATIONS = [
     image: "upenn-accounting.jpg",
     pdf: "",
     verify: "",
-    available: false
+    preview: true
   },
   {
     title: "Excel Fundamentals for Data Analysis",
@@ -46,7 +45,7 @@ var CERTIFICATIONS = [
     image: "placeholder-certification.svg",
     pdf: "",
     verify: "",
-    available: false
+    preview: true
   },
   {
     title: "Corporate Finance Fundamentals",
@@ -56,6 +55,6 @@ var CERTIFICATIONS = [
     pdf: "",
     verify: "",
     status: "en-cours",
-    available: false
+    preview: true
   }
 ];
