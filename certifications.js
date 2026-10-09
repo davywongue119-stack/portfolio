@@ -1,22 +1,19 @@
 /* ============================================================
    CERTIFICATIONS — fichier de configuration
    ------------------------------------------------------------
-   Pour ajouter un certificat :
-   1. Déposez son aperçu (JPG/PNG optimisé) et/ou son PDF dans
-      le dossier  assets/certifications/
-   2. Ajoutez une entrée ci-dessous.
-  
+   Les images représentatives sont stockées dans :
+   assets/certifications/
+
    Champs :
-   title    : intitulé exact (ne pas modifier l'original)
+   title    : intitulé exact
    issuer   : organisme émetteur
    date     : date d'obtention (optionnel)
    expiry   : date d'expiration (optionnel)
-   image    : nom du fichier d'aperçu dans assets/certifications/
-   pdf      : nom du fichier PDF (ouvre dans un nouvel onglet)
-   verify   : lien officiel de vérification (uniquement s'il existe)
-   status   : "en-cours" pour les formations en cours
-   preview  : true   →  image flue (image représentative, pas la vraie certif)
-              false  →  image nette (vraie certif disponible)
+   image    : nom du fichier dans assets/certifications/
+   pdf      : PDF associé (optionnel)
+   verify   : lien de vérification officiel (optionnel)
+   preview  : true  => image représentative, floutée ou visuel stylisé
+              false => image réelle nette
    ============================================================ */
 
 var CERTIFICATIONS = [
@@ -42,7 +39,7 @@ var CERTIFICATIONS = [
     title: "Excel Fundamentals for Data Analysis",
     issuer: "Macquarie University",
     date: "",
-    image: "placeholder-certification.svg",
+    image: "bloomberg-bmc.jpg",
     pdf: "",
     verify: "",
     preview: true
@@ -51,7 +48,7 @@ var CERTIFICATIONS = [
     title: "Corporate Finance Fundamentals",
     issuer: "Corporate Finance Institute (CFI) — Coursera",
     date: "",
-    image: "placeholder-certification.svg",
+    image: "upenn-accounting.jpg",
     pdf: "",
     verify: "",
     status: "en-cours",
