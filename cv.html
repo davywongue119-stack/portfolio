@@ -92,9 +92,6 @@ section{padding:7rem 2rem;max-width:74rem;margin:0 auto}
 .lightbox .close{position:absolute;top:1.4rem;right:1.8rem;background:none;border:1px solid var(--line);color:var(--ink);width:2.8rem;height:2.8rem;border-radius:50%;cursor:pointer;font-size:1rem;transition:.25s}
 .lightbox .close:hover{border-color:var(--accent);color:var(--accent);transform:rotate(90deg)}
 
-/* ---------- HOW-TO ---------- */
-.howto{display:none}
-
 footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);border-top:1px solid var(--line)}
 .rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
 .rv.on{opacity:1;transform:none}
@@ -163,54 +160,66 @@ footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-
 
 <footer>© 2026 Wongue Davy Cédric — CV &amp; Certifications</footer>
 
-<script src="assets/certifications.js"></script>
+<script src="certifications.js"></script>
 <script>
 /* ---------- Reveal ---------- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.1});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 
-/* ---------- Galerie de certifications (config : assets/certifications.js) ---------- */
+/* ---------- Galerie de certifications (config : certifications.js) ---------- */
 (function(){
   var grid=document.getElementById('cert-grid');
   var count=document.getElementById('cert-count');
-  count.textContent=String(CERTIFICATIONS.length).padStart(2,'0')+' documents';
 
-  CERTIFICATIONS.forEach(function(c){
+  if (!window.CERTIFICATIONS || !Array.isArray(window.CERTIFICATIONS)) {
+    count.textContent='00 documents';
+    return;
+  }
+
+  count.textContent=String(window.CERTIFICATIONS.length).padStart(2,'0')+' documents';
+
+  window.CERTIFICATIONS.forEach(function(c){
     var card=document.createElement('article');
     card.className='cert-card rv';
 
     var thumb=document.createElement('div');
     thumb.className='cert-thumb';
 
-    if(c.image){
+    if (c.image) {
       var img=document.createElement('img');
-      img.src='assets/certifications/'+c.image;
-      img.alt='Certificat — '+c.title;
+      img.src='assets/certifications/' + c.image;
+      img.alt='Certificat — ' + c.title;
       img.loading='lazy';
-      // Apply blur if this is a preview image
-      if(c.preview === true){
+      if (c.preview === true) {
         img.classList.add('preview-blur');
       }
       thumb.appendChild(img);
-      // Allow click to open lightbox
-      card.addEventListener('click',function(){openLb(c);});
+      card.addEventListener('click', function(){ openLb(c); });
     }
 
     var meta=document.createElement('div');
     meta.className='cert-meta';
-    var h=document.createElement('h4');h.textContent=c.title;meta.appendChild(h);
-    var o=document.createElement('div');o.className='org';o.textContent=c.issuer;meta.appendChild(o);
-    var d=document.createElement('span');d.className='date';
-    d.textContent=(c.date?'Obtenu : '+c.date:'')+(c.expiry?' · expire : '+c.expiry:'')+(c.status==='en-cours'?'En cours de validation':'');
-    if(d.textContent.trim()) meta.appendChild(d);
-    if(c.verify){
-      var v=document.createElement('a');v.className='verify';v.href=c.verify;v.target='_blank';v.rel='noopener';
-      v.textContent='Vérifier l\'authenticité ↗';
-      v.addEventListener('click',function(e){e.stopPropagation();});
+    var h=document.createElement('h4'); h.textContent=c.title; meta.appendChild(h);
+    var o=document.createElement('div'); o.className='org'; o.textContent=c.issuer; meta.appendChild(o);
+
+    if (c.date || c.expiry || c.status === 'en-cours') {
+      var d=document.createElement('span');
+      d.className='date';
+      d.textContent=(c.date ? 'Obtenu : ' + c.date : '') + (c.expiry ? ' · expire : ' + c.expiry : '') + (c.status === 'en-cours' ? 'En cours de validation' : '');
+      meta.appendChild(d);
+    }
+
+    if (c.verify) {
+      var v=document.createElement('a');
+      v.className='verify';
+      v.href=c.verify; v.target='_blank'; v.rel='noopener';
+      v.textContent='Vérifier l’authenticité ↗';
+      v.addEventListener('click', function(e){ e.stopPropagation(); });
       meta.appendChild(v);
     }
 
-    card.appendChild(thumb);card.appendChild(meta);
+    card.appendChild(thumb);
+    card.appendChild(meta);
     grid.appendChild(card);
     io.observe(card);
   });
@@ -220,18 +229,25 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
       lbImg=document.getElementById('lb-img'),
       lbTitle=document.getElementById('lb-title'),
       lbOrg=document.getElementById('lb-org');
+
   window.openLb=function(c){
-    lbImg.src='assets/certifications/'+c.image;
-    lbImg.alt='Certificat — '+c.title;
+    if (!c.image) return;
+    lbImg.src='assets/certifications/' + c.image;
+    lbImg.alt='Certificat — ' + c.title;
     lbTitle.textContent=c.title;
-    lbOrg.textContent=c.issuer+(c.date?' · '+c.date:'');
+    lbOrg.textContent=c.issuer + (c.date ? ' · ' + c.date : '');
     lb.classList.add('open');
     document.body.style.overflow='hidden';
   };
-  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
-  document.getElementById('lb-close').addEventListener('click',closeLb);
-  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+
+  function closeLb(){
+    lb.classList.remove('open');
+    document.body.style.overflow='';
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
 })();
 </script>
 </body>
