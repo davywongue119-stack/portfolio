@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wongue Davy Cédric — Ingénieur · Asset Management & Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d; --bg2:#101014; --ink:#ece9e2; --mut:#8a877f;
+  --line:rgba(236,233,226,.14); --accent:#c8f04a; --accent2:#7dd6c2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;line-height:1.5}
+::selection{background:var(--accent);color:#0b0b0d}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--accent)}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 2rem;mix-blend-mode:difference}
+nav .logo{font-weight:700;letter-spacing:.05em}
+nav .links a{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;margin-left:1.6rem;color:var(--ink)}
+@media(max-width:640px){nav .links a{margin-left:.9rem;font-size:.65rem}}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;position:relative}
+.hero .kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem}
+.hero h1{font-family:'Instrument Serif',serif;font-weight:400;line-height:.95;letter-spacing:-.02em}
+.hero h1 span{display:block;font-size:clamp(2.6rem,9vw,7.5rem)}
+.hero h1 .it{font-style:italic;color:var(--mut)}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero .meta{margin-top:3rem;display:flex;gap:3rem;flex-wrap:wrap;font-size:.78rem;color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
+.hero .meta b{display:block;color:var(--ink);font-weight:500;margin-top:.3rem;text-transform:none;letter-spacing:0;font-size:.95rem}
+.scroll-cue{position:absolute;bottom:2rem;left:2rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
+.scroll-cue::after{content:'';display:block;width:1px;height:44px;background:var(--line);margin-top:.8rem;animation:drip 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+
+/* ---------- PORTRAIT ---------- */
+.hero-inner{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:3rem;align-items:center}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;gap:2.5rem}}
+.portrait-wrap{position:relative;justify-self:end}
+@media(max-width:860px){.portrait-wrap{justify-self:start;max-width:280px}}
+.portrait{position:relative;width:min(320px,68vw);aspect-ratio:4/5;overflow:hidden;border-radius:4px;
+  clip-path:inset(0 0 100% 0);animation:preveal 1.2s cubic-bezier(.22,1,.36,1) .3s forwards}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.35) contrast(1.03)}
+.portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(11,11,13,.55));pointer-events:none}
+@keyframes preveal{to{clip-path:inset(0 0 0% 0)}}
+.portrait-tag{position:absolute;bottom:-.9rem;left:-1.2rem;background:var(--bg);border:1px solid var(--line);
+  padding:.55rem 1rem;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mut);animation:fadein 1s ease 1.2s both}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.portrait-frame{position:absolute;top:-1rem;right:-1rem;width:5.5rem;height:5.5rem;border-top:1px solid var(--accent2);border-right:1px solid var(--accent2);opacity:.7}
+@media (prefers-reduced-motion:reduce){.portrait{clip-path:none;animation:none}.portrait-tag{animation:none;opacity:1}}
+
+/* ---------- MANIFESTE ---------- */
+.manifesto{padding:22vh 2rem;max-width:60rem;margin:0 auto}
+.manifesto p{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.35;color:var(--ink)}
+.manifesto p em{font-style:italic;color:var(--accent)}
+.manifesto .who{margin-top:2.5rem;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mut)}
+
+/* ---------- CHAPITRES ---------- */
+.chapters{padding:0 2rem 8rem}
+.ch-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:1.2rem}
+.ch-head h2{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);font-weight:400}
+.ch-head span{font-size:.72rem;color:var(--mut)}
+.chapter{display:grid;grid-template-columns:6rem 1fr 1fr;gap:2rem;padding:4rem 0;border-bottom:1px solid var(--line);align-items:start}
+.chapter .num{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--accent);padding-top:.5rem}
+.chapter h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05}
+.chapter h3 span{display:block;font-style:italic;color:var(--mut);font-size:.55em;margin-top:.4rem}
+.chapter .body{color:var(--mut);font-size:1rem;max-width:34rem}
+.chapter .body p+p{margin-top:1rem}
+.chapter .body ul{list-style:none;margin-top:1rem}
+.chapter .body li{padding:.35rem 0 .35rem 1.2rem;position:relative;font-size:.95rem}
+.chapter .body li::before{content:'→';position:absolute;left:0;color:var(--accent2)}
+.chapter .body .fin{color:var(--accent2);font-size:.85rem;margin-top:1.2rem;display:block;border-left:2px solid var(--accent2);padding-left:.9rem}
+.chapter .date{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-top:1.2rem;display:block}
+@media(max-width:820px){.chapter{grid-template-columns:1fr;gap:1rem}}
+
+/* ---------- INTERLUDE : interactive ---------- */
+.interlude{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6rem 2rem;text-align:center}
+.interlude h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.8rem,4vw,3rem);margin-bottom:.6rem}
+.interlude .sub{color:var(--mut);font-size:.9rem;margin-bottom:3rem}
+#chart{width:100%;max-width:760px;height:320px;display:block;margin:0 auto}
+.chart-note{margin-top:1.4rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mut)}
+.chart-legend{display:flex;justify-content:center;gap:2rem;margin-top:.8rem;font-size:.75rem;color:var(--mut);flex-wrap:wrap}
+.chart-legend i{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;margin-right:.45rem;vertical-align:middle}
+.btn-line{display:inline-block;margin-top:3rem;border:1px solid var(--line);padding:.9rem 2.4rem;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;transition:.3s;background:none;color:var(--ink);cursor:pointer;font-family:inherit}
+.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- INDEX COMPÉTENCES ---------- */
+.index{padding:8rem 2rem;max-width:70rem;margin:0 auto}
+.index .row{display:grid;grid-template-columns:3rem 1fr auto;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--line);transition:.3s}
+.index .row:hover{padding-left:1rem}
+.index .row .i{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--mut)}
+.index .row .n{font-family:'Instrument Serif',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400}
+.index .row .n small{display:block;font-family:'Space Grotesk';font-size:.78rem;color:var(--mut);margin-top:.2rem;letter-spacing:.05em}
+.index .row .tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--accent);border:1px solid rgba(200,240,74,.35);border-radius:99px;padding:.2rem .7rem;white-space:nowrap}
+
+/* ---------- LANGUES & MOBILITÉ ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:70rem;margin:0 auto;padding:0 2rem 8rem}
+.duo .col{padding:2.5rem;border:1px solid var(--line)}
+.duo .col:first-child{border-right:none}
+.duo h3{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);font-weight:400;margin-bottom:1.8rem}
+.duo .item{display:flex;justify-content:space-between;padding:.9rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+.duo .item:last-child{border-bottom:none}
+.duo .item .lv{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--accent2)}
+@media(max-width:720px){.duo{grid-template-columns:1fr}.duo .col:first-child{border-right:1px solid var(--line);border-bottom:none}}
+
+/* ---------- CONTACT ---------- */
+.contact{padding:20vh 2rem 12vh;text-align:center;border-top:1px solid var(--line)}
+.contact h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.6rem,7vw,5.5rem);line-height:1.05}
+.contact h2 em{font-style:italic;color:var(--accent)}
+.contact p{color:var(--mut);margin:2rem auto 3rem;max-width:34rem}
+.contact .links a{display:inline-block;margin:.5rem;padding:1rem 2.2rem;border:1px solid var(--line);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s}
+.contact .links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+.contact .mob{margin-top:3rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.contact .mob b{color:var(--accent2);font-weight:500}
+footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);border-top:1px solid var(--line)}
+
+/* ---------- Reveal ---------- */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">WD<span style="color:var(--accent)">.</span></div>
+  <div class="links">
+    <a href="#histoire">Histoire</a><a href="#competences">Index</a><a href="cv.html">Documents</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="kicker">CV Portfolio — 2019 → maintenant</div>
+  <div class="hero-inner">
+    <div>
+  <h1>
+    <span>Ingénieur</span>
+    <span class="it">des procédés,</span>
+    <span>une appétence pour la <em>finance.</em></span>
+  </h1>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait">
+        <img src="assets/portrait.jpg" alt="Portrait professionnel de Wongue Davy Cédric, ingénieur des procédés candidat en asset management" width="374" height="467">
+      </div>
+      <span class="portrait-frame" aria-hidden="true"></span>
+      <span class="portrait-tag">Douala, Cameroun</span>
+    </div>
+  </div>
+  <div class="meta">
+    <div>Profil<b>Asset Manager Advisory · Finance</b></div>
+    <div>Base<b>Douala, Cameroun</b></div>
+    <div>Contact<b>+237 698 385 430</b></div>
+    <div>Mobilité<b>Nationale & internationale — Permis B</b></div>
+  </div>
+  <div class="scroll-cue">Défiler</div>
+</header>
+
+<!-- MANIFESTE -->
+<section class="manifesto">
+  <p class="rv">Ingénieur en génie des procédés agroalimentaires, formé aux systèmes d'information et à la <em>Big Data</em>, certifié <em>Bloomberg Market Concepts</em> et en comptabilité financière par l'Université de Pennsylvanie. Rigoureux, attentif aux détails, animé par une <em>forte appétence pour la finance</em> — de l'audit industriel à l'analyse financière, c'est la même exigence : comprendre, chiffrer, décider.</p>
+  <div class="who rv">— Wongue Davy Cédric · ingénieur, orienté finance</div>
+</section>
+
+<!-- CHAPITRES -->
+<section class="chapters" id="histoire">
+  <div class="ch-head rv"><h2>Le parcours, en chapitres</h2><span>04 / 04</span></div>
+
+  <article class="chapter rv">
+    <div class="num">01</div>
+    <h3>L'appétence<span>Pourquoi l'asset management ?</span></h3>
+    <div class="body">
+      <p>L'ingénierie m'a appris à modéliser des systèmes complexes et à piloter la performance par les données. La finance repose sur les mêmes fondamentaux : analyse rigoureuse, gestion du risque, décision chiffrée.</p>
+      <ul>
+        <li>Certification Bloomberg Market Concepts (BMC)</li>
+        <li>Introduction to Financial Accounting — Université de Pennsylvanie</li>
+        <li>Analyse de données en milieu industriel</li>
+      </ul>
+      <span class="fin">Objectif : contribuer à un poste en asset management, finance ou advisory.</span>
+    </div>
+  </article>
+
+  <article class="chapter rv">
+    <div class="num">02</div>
+    <h3>Le terrain<span>Industrie, qualité & audit</span></h3>
+    <div class="body">
+      <p>Six expériences en milieu industriel agroalimentaire, de la production au système de management qualité.</p>
+      <ul>
+        <li><b>Olam Agri</b> — Gap analysis FSSC 22000, 23 non-conformités traitées, taux de conformité de 91% à l'audit blanc</li>
+        <li><b>Michele's Industries</b> — +40% de recyclage des conditionnements, −15% d'arrêts non planifiés</li>
+        <li><b>AVRAM APTUS</b> — 8 micro-industries accompagnées, variabilité produit réduite de 18%, 32 opérateurs formés</li>
+        <li><b>FBI — Food & Beverages Industries</b> — optimisation formulation/coût de 12%, pertes process réduites de 8%</li>
+        <li><b>OK Foods</b> — audits ISO 22000, rebuts réduits de 6% en 8 semaines</li>
+        <li><b>SIC Cacao</b> — +10% de productivité torréfaction/broyage</li>
+      </ul>
+      <span class="date">2021 — 2026 · Douala, Cameroun</span>
+      <span class="fin">Transférable : audit, conformité, KPI, analyse de données, amélioration continue.</span>
+    </div>
+  </article>
+
+  <article class="chapter rv">
+    <div class="num">03</div>
+    <h3>La donnée<span>Master Systèmes d'Information & Big Data</span></h3>
+    <div class="body">
+      <p>Master 1 en Management des Systèmes d'Information et Big Data à l'ESSEC de Douala — l'alliance de la rigueur d'ingénieur et des outils de la donnée moderne.</p>
+      <span class="date">2026 — 2027 · ESSEC Douala, en cours</span>
+      <span class="fin">Outils : Excel avancé, ERP, AutoCAD, analyse de données, notions BI.</span>
+    </div>
+  </article>
+
+  <article class="chapter rv">
+    <div class="num">04</div>
+    <h3>Les preuves<span>Formation & certifications</span></h3>
+    <div class="body">
+      <p>Diplôme d'ingénieur en génie des procédés agroalimentaires — Université Catholique Saint-Jérôme de Douala (2024). Cycle préparatoire intégré en sciences de l'ingénieur (2021).</p>
+      <ul>
+        <li>Internal Auditing : Fundamental Principles — Alison</li>
+        <li>ISO 45001 Internal Auditing Strategies — Alison</li>
+        <li>Effective ISO 9001 Internal Auditing Practices — Alison</li>
+      </ul>
+      <span class="date">2019 — 2027</span>
+      <span class="fin">Certifié Bloomberg · certifié comptabilité financière (UPenn) · auditeur interne ISO 9001/45001.</span>
+    </div>
+  </article>
+</section>
+
+<!-- INTERLUDE INTERACTIF -->
+<section class="interlude">
+  <h2 class="rv">Une trajectoire, deux forces.</h2>
+  <p class="sub rv">Survolez ou touchez le graphique — de l'ingénierie opérationnelle vers la finance d'analyse.</p>
+  <canvas id="chart"></canvas>
+  <div class="chart-legend rv">
+    <span><i style="background:var(--accent2)"></i>Excellence industrielle & qualité</span>
+    <span><i style="background:var(--accent)"></i>Compétences finance & data</span>
+  </div>
+  <div class="chart-note rv">Illustration interactive — parcours 2019 → 2027</div>
+  <br>
+  <button class="btn-line rv" id="replay">↻ Rejouer la courbe</button>
+</section>
+
+<!-- INDEX COMPÉTENCES -->
+<section class="index" id="competences">
+  <div class="ch-head rv" style="margin-bottom:2rem"><h2>Index des compétences</h2><span>08 entrées</span></div>
+  <div class="row rv"><span class="i">01</span><div class="n">Analyse financière<small>Terminal Bloomberg · BMC certifié</small></div><span class="tag">Bloomberg</span></div>
+  <div class="row rv"><span class="i">02</span><div class="n">Comptabilité financière<small>Université de Pennsylvanie</small></div><span class="tag">UPenn</span></div>
+  <div class="row rv"><span class="i">03</span><div class="n">Audit interne<small>ISO 9001 · ISO 45001 · FSSC 22000</small></div><span class="tag">ISO</span></div>
+  <div class="row rv"><span class="i">04</span><div class="n">Analyse de données<small>KPI · Ishikawa · gap analysis · traçabilité</small></div><span class="tag">Data</span></div>
+  <div class="row rv"><span class="i">05</span><div class="n">Excel · Word · PowerPoint<small>Maîtrise avancée · modélisation</small></div><span class="tag">Office</span></div>
+  <div class="row rv"><span class="i">06</span><div class="n">Qualité & conformité<small>HACCP · ISO 22000 · BPH/BPF · 5S</small></div><span class="tag">Qualité</span></div>
+  <div class="row rv"><span class="i">07</span><div class="n">Systèmes d'information & Big Data<small>Master 1 ESSEC · notions ERP, AutoCAD</small></div><span class="tag">SI/Big Data</span></div>
+  <div class="row rv"><span class="i">08</span><div class="n">Soft skills<small>Esprit analytique · pensée critique · leadership · négociation</small></div><span class="tag">Humain</span></div>
+</section>
+
+<!-- LANGUES & MOBILITÉ -->
+<section class="duo">
+  <div class="col rv">
+    <h3>Langues</h3>
+    <div class="item"><span>Français</span><span class="lv">Natif</span></div>
+    <div class="item"><span>Anglais</span><span class="lv">Courant — TOEFL C1</span></div>
+    <div class="item"><span>Allemand</span><span class="lv">Notions</span></div>
+  </div>
+  <div class="col rv">
+    <h3>Mobilité</h3>
+    <div class="item"><span>Permis B</span><span class="lv">Validé</span></div>
+    <div class="item"><span>Mobilité nationale</span><span class="lv">Disponible</span></div>
+    <div class="item"><span>Mobilité internationale</span><span class="lv">Si nécessaire</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="rv">La suite,<br><em>avec vous ?</em></h2>
+  <p class="rv">Disponible pour un poste en asset management, finance ou advisory — au Cameroun ou à l'international.</p>
+  <div class="links rv">
+    <a href="tel:+237698385430">+237 698 385 430</a>
+    <a href="#">LinkedIn</a>
+    <a href="cv.html">CV &amp; Certifications</a>
+  </div>
+  <div class="mob rv"><b>Permis B</b> · Mobilité nationale & internationale</div>
+</section>
+
+<footer>© 2026 Wongue Davy Cédric — Ingénieur · Asset Management & Finance</footer>
+
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+/* Chart : deux courbes animées (industrie constante, finance/data en forte montée) */
+var cv=document.getElementById('chart'),cx=cv.getContext('2d');
+var eng=[],fin=[],prog=0,raf;
+function resize(){cv.width=cv.getBoundingClientRect().width*devicePixelRatio;cv.height=320*devicePixelRatio;cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);}
+function build(){
+  var W=cv.getBoundingClientRect().width,H=320;
+  eng=[];fin=[];
+  for(var i=0;i<=60;i++){var t=i/60;
+    eng.push({x:t*W,y:H-50-(70+8*Math.sin(t*7)-t*18)});
+    fin.push({x:t*W,y:H-30-(14+(H-90)*(1-Math.exp(-t*1.9))+7*Math.sin(t*9)*(1-t))});
+  }
+}
+function draw(){
+  var W=cv.getBoundingClientRect().width,H=320;
+  cx.clearRect(0,0,W,H);
+  cx.strokeStyle='rgba(236,233,226,.07)';cx.lineWidth=1;
+  for(var g=0;g<5;g++){var y=30+g*(H-60)/4;cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke();}
+  cx.fillStyle='rgba(138,135,127,.9)';cx.font='10px IBM Plex Mono';
+  cx.fillText('2019',4,H-8);cx.fillText('2027',W-34,H-8);
+  var n=Math.max(2,Math.floor(prog*eng.length));
+  [['#7dd6c2',eng],['#c8f04a',fin]].forEach(function(pair){
+    var pts=pair[1];
+    cx.strokeStyle=pair[0];cx.lineWidth=2;cx.beginPath();
+    for(var i=0;i<n;i++){var p=pts[i];if(i===0)cx.moveTo(p.x,p.y);else cx.lineTo(p.x,p.y);}
+    cx.stroke();
+    var hp=pts[n-1];cx.fillStyle=pair[0];cx.beginPath();cx.arc(hp.x,hp.y,4,0,7);cx.fill();
+  });
+}
+function animate(){prog=0;cancelAnimationFrame(raf);
+  (function step(){prog+=0.008;if(prog>1)prog=1;draw();if(prog<1)raf=requestAnimationFrame(step);})();}
+window.addEventListener('resize',function(){resize();build();draw();});
+resize();build();
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate();cio.disconnect();}})},{threshold:.4});
+cio.observe(cv);
+document.getElementById('replay').addEventListener('click',animate);
+</script>
+</body>
+</html>
