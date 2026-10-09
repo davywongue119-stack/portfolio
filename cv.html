@@ -187,18 +187,13 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
       img.src='assets/certifications/'+c.image;
       img.alt='Certificat — '+c.title;
       img.loading='lazy';
+      // Apply blur if this is a preview image
       if(c.preview === true){
         img.classList.add('preview-blur');
       }
       thumb.appendChild(img);
-      if(c.pdf || c.image){
-        card.addEventListener('click',function(){openLb(c);});
-      }
-    }else{
-      var un=document.createElement('div');
-      un.className='cert-unavail';
-      un.innerHTML='<span class="lock">◌</span><p>Certificat non encore disponible, pour des raisons indépendantes de notre volonté.</p><small>espace réservé</small>';
-      thumb.appendChild(un);
+      // Allow click to open lightbox
+      card.addEventListener('click',function(){openLb(c);});
     }
 
     var meta=document.createElement('div');
@@ -207,10 +202,10 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
     var o=document.createElement('div');o.className='org';o.textContent=c.issuer;meta.appendChild(o);
     var d=document.createElement('span');d.className='date';
     d.textContent=(c.date?'Obtenu : '+c.date:'')+(c.expiry?' · expire : '+c.expiry:'')+(c.status==='en-cours'?'En cours de validation':'');
-    meta.appendChild(d);
+    if(d.textContent.trim()) meta.appendChild(d);
     if(c.verify){
       var v=document.createElement('a');v.className='verify';v.href=c.verify;v.target='_blank';v.rel='noopener';
-      v.textContent='Vérifier l’authenticité ↗';
+      v.textContent='Vérifier l\'authenticité ↗';
       v.addEventListener('click',function(e){e.stopPropagation();});
       meta.appendChild(v);
     }
@@ -226,8 +221,6 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
       lbTitle=document.getElementById('lb-title'),
       lbOrg=document.getElementById('lb-org');
   window.openLb=function(c){
-    var src=c.pdf?('assets/certifications/'+c.pdf):('assets/certifications/'+c.image);
-    if(c.pdf){window.open(src,'_blank');return;}
     lbImg.src='assets/certifications/'+c.image;
     lbImg.alt='Certificat — '+c.title;
     lbTitle.textContent=c.title;
