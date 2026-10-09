@@ -5,7 +5,7 @@
    1. Déposez son aperçu (JPG/PNG optimisé) et/ou son PDF dans
       le dossier  assets/certifications/
    2. Ajoutez une entrée ci-dessous.
-
+ 
    Champs :
    title    : intitulé exact (ne pas modifier l'original)
    issuer   : organisme émetteur
@@ -43,7 +43,7 @@ var CERTIFICATIONS = [
     title: "Excel Fundamentals for Data Analysis",
     issuer: "Macquarie University",
     date: "",
-    image: "",
+    image: "placeholder-certification.svg",
     pdf: "",
     verify: "",
     available: false
@@ -52,7 +52,7 @@ var CERTIFICATIONS = [
     title: "Corporate Finance Fundamentals",
     issuer: "Corporate Finance Institute (CFI) — Coursera",
     date: "",
-    image: "",
+    image: "placeholder-certification.svg",
     pdf: "",
     verify: "",
     status: "en-cours",
