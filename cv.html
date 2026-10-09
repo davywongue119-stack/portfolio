@@ -18,190 +18,105 @@ body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-seri
 a{color:var(--ink);text-decoration:none}
 a:hover{color:var(--accent)}
 
+/* ---------- NAV ---------- */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 2rem;mix-blend-mode:difference;background:rgba(11,11,13,.02)}
 nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;mix-blend-mode:difference;background:rgba(11,11,13,.02)}
 nav .logo{font-weight:700;letter-spacing:.05em}
 nav .links a{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;margin-left:1.6rem;color:var(--ink)}
 nav .links a.active{color:var(--accent)}
 @media(max-width:640px){nav .links a{margin-left:.9rem;font-size:.6rem}}
 
+/* ---------- HEADER DE PAGE ---------- */
 .page-head{padding:20vh 2rem 6vh;border-bottom:1px solid var(--line)}
 .page-head .kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem}
 .page-head h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.6rem,8vw,6rem);line-height:.95;letter-spacing:-.02em}
 .page-head h1 em{font-style:italic;color:var(--mut)}
 .page-head p{color:var(--mut);margin-top:1.6rem;max-width:38rem}
 
+/* ---------- SECTIONS ---------- */
 section{padding:7rem 2rem;max-width:74rem;margin:0 auto}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:3.5rem}
 .sec-head h2{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);font-weight:400}
 .sec-head h2 b{color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:400;margin-right:1rem}
 .sec-head span{font-size:.72rem;color:var(--mut);font-family:'IBM Plex Mono',monospace}
 
+/* ---------- CV ---------- */
 .cv-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:3rem;align-items:start}
 @media(max-width:860px){.cv-grid{grid-template-columns:1fr}}
 .cv-info h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.1;margin-bottom:1.4rem}
-.cv-info h3 em{font-style:italic;color:var(--accent)}
-.cv-info p{color:var(--mut);margin-bottom:1.2rem;max-width:30rem}
-.cv-info ul{list-style:none;margin:1.6rem 0 2.4rem}
-.cv-info li{padding:.4rem 0 .4rem 1.2rem;position:relative;font-size:.95rem;color:var(--mut)}
-.cv-info li::before{content:'→';position:absolute;left:0;color:var(--accent2)}
-.btn{display:inline-block;margin:.4rem .8rem .4rem 0;padding:1rem 2.2rem;border:1px solid var(--line);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s;cursor:pointer;background:transparent;color:var(--ink)}
-.btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
-.btn.solid{background:var(--accent);border-color:var(--accent);color:#0b0b0d;font-weight:500}
-.btn.solid:hover{background:transparent;color:var(--accent)}
-.cv-preview{position:relative;border:1px solid var(--line);background:var(--bg2);transition:.4s}
-.cv-preview:hover{border-color:rgba(200,240,74,.5);transform:translateY(-4px)}
-.cv-preview img{display:block;width:100%;height:auto;filter:grayscale(0) contrast(1.02)}
-.cv-preview .cap{display:flex;justify-content:space-between;padding:.9rem 1.1rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);border-top:1px solid var(--line)}
-.cv-viewer{margin-top:3.5rem;border:1px solid var(--line);background:var(--bg2)}
-.cv-viewer .bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.4rem;border-bottom:1px solid var(--line);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
-.cv-viewer .bar a{color:var(--accent);font-size:.72rem}
-.cv-viewer iframe{width:100%;height:78vh;border:none;display:block;background:#fff}
+@@ -64,26 +59,19 @@
 .cv-viewer .fallback{padding:2.5rem;text-align:center;color:var(--mut);font-size:.9rem}
 @media(max-width:720px){.cv-viewer iframe{height:62vh}}
 
+/* ---------- CERTIFICATIONS ---------- */
 .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
-.cert-card{border:1px solid var(--line);background:var(--bg2);overflow:hidden;transition:.35s;position:relative}
-.cert-card.cert-available:hover{cursor:pointer;border-color:rgba(200,240,74,.5);transform:translateY(-5px)}
-.cert-card.cert-preview{cursor:default}
+.cert-card{border:1px solid var(--line);background:var(--bg2);overflow:hidden;transition:.35s;cursor:pointer;position:relative}
+.cert-card:hover{border-color:rgba(200,240,74,.5);transform:translateY(-5px)}
 .cert-thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:#16161b}
 .cert-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1)}
-.cert-card.cert-available:hover .cert-thumb img{transform:scale(1.05)}
-.cert-thumb img.preview-blur{filter:blur(6px) saturate(.5);opacity:.85}
-
-.cert-unavailable{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;text-align:center;padding:1.4rem;background:rgba(11,11,13,.75);backdrop-filter:blur(3px);opacity:0;transition:opacity .35s;pointer-events:none;z-index:10}
-.cert-card.cert-preview:hover .cert-unavailable{opacity:1}
-.cert-unavailable p{font-size:.78rem;color:var(--ink);max-width:15rem;line-height:1.5;font-weight:500}
-.cert-unavailable small{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin-top:.4rem}
-
+.cert-card:hover .cert-thumb img{transform:scale(1.05)}
+.cert-thumb img.preview-blur{filter:blur(4px) saturate(.7);opacity:.9}
+.cert-unavail{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;text-align:center;padding:1.4rem;background:rgba(11,11,13,.35)}
+.cert-unavail .lock{width:2.6rem;height:2.6rem;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--mut)}
+.cert-unavail p{font-size:.78rem;color:var(--ink);max-width:15rem;line-height:1.5}
+.cert-unavail small{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
 .cert-meta{padding:1.2rem 1.3rem 1.4rem;border-top:1px solid var(--line)}
 .cert-meta h4{font-family:'Instrument Serif',serif;font-weight:400;font-size:1.15rem;line-height:1.25;margin-bottom:.5rem}
 .cert-meta .org{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2)}
 .cert-meta .date{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--mut);margin-top:.55rem;display:block}
 .cert-meta .verify{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-block;margin-top:.7rem;border-bottom:1px solid rgba(200,240,74,.4);padding-bottom:.12rem}
+.cert-meta .pending{display:inline-block;margin-top:.7rem;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:.2rem .7rem}
 
+/* ---------- LIGHTBOX ---------- */
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(6,6,8,.92);display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(6px)}
 .lightbox.open{display:flex}
 .lightbox figure{max-width:min(920px,94vw);max-height:88vh;display:flex;flex-direction:column}
-.lightbox img{max-width:100%;max-height:76vh;object-fit:contain;border:1px solid var(--line)}
-.lightbox figcaption{display:flex;justify-content:space-between;gap:1rem;padding:1rem .2rem;font-size:.78rem;color:var(--mut)}
-.lightbox .close{position:absolute;top:1.4rem;right:1.8rem;background:none;border:1px solid var(--line);color:var(--ink);width:2.8rem;height:2.8rem;border-radius:50%;cursor:pointer;font-size:1rem;transition:.25s}
-.lightbox .close:hover{border-color:var(--accent);color:var(--accent);transform:rotate(90deg)}
-
-footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);border-top:1px solid var(--line)}
-.rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
-.rv.on{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
-</style>
-<base target="_blank">
-</head>
-<body>
-
-<nav>
-  <div class="logo">WD<span style="color:var(--accent)">.</span></div>
-  <div class="links">
-    <a href="index.html">Accueil</a><a href="index.html#histoire">Parcours</a><a href="index.html#competences">Index</a><a href="cv.html" class="active">Documents</a><a href="index.html#contact">Contact</a>
-  </div>
-</nav>
-
-<header class="page-head">
-  <div class="kicker">Documents officiels — CV Portfolio</div>
-  <h1>CV &amp; <em>certifications.</em></h1>
+@@ -114,7 +102,6 @@
   <p>Curriculum vitæ complet, téléchargeable, et galerie des attestations de formation. Tous les documents sont présentés tels que délivrés par leurs organismes émetteurs.</p>
 </header>
 
+<!-- 01 — CV -->
 <section id="cv">
   <div class="sec-head rv"><h2><b>01</b>Curriculum vitæ</h2><span>aperçu + pdf</span></div>
   <div class="cv-grid">
-    <div class="cv-info rv">
-      <h3>Un CV d'ingénieur,<br>orienté <em>finance.</em></h3>
-      <p>Ingénieur des procédés méthodique, analytique et rigoureux — certifié Bloomberg Market Concepts et en comptabilité financière (Université de Pennsylvanie). Six expériences industrielles en maintenance, qualité et conduite de changement.</p>
-      <ul>
-        <li>PDF original, haute résolution de lecture</li>
-        <li>Nom de fichier propre et professionnel</li>
-        <li>Mise à jour : 2026</li>
-      </ul>
-      <a class="btn solid" href="assets/CV_Wongue_Davy_Cedric.pdf" target="_blank" rel="noopener">Consulter mon CV</a>
-      <a class="btn" href="assets/CV_Wongue_Davy_Cedric.pdf" download="CV_Wongue_Davy_Cedric_Asset_Management.pdf">Télécharger mon CV PDF ↓</a>
-    </div>
-    <a class="cv-preview rv" href="assets/CV_Wongue_Davy_Cedric.pdf" target="_blank" rel="noopener" aria-label="Ouvrir le CV en grand">
-      <img src="assets/cv-preview.jpg" alt="Aperçu de la première page du CV de Wongue Davy Cédric" loading="lazy" width="1240" height="1754">
-      <span class="cap"><span>CV — page 1 / 1</span><span>ouvrir ↗</span></span>
-    </a>
-  </div>
-  <div class="cv-viewer rv">
-    <div class="bar"><span>Lecture intégrée</span><a href="assets/CV_Wongue_Davy_Cedric.pdf" target="_blank" rel="noopener">Ouvrir dans un nouvel onglet ↗</a></div>
-    <iframe src="assets/CV_Wongue_Davy_Cedric.pdf#view=FitH" title="Visualiseur PDF — CV de Wongue Davy Cédric">
-      <p class="fallback">Votre navigateur ne permet pas l'affichage intégré du PDF.
-      <a href="assets/CV_Wongue_Davy_Cedric.pdf" target="_blank" rel="noopener" style="color:var(--accent)">Consulter le CV dans un nouvel onglet ↗</a></p>
-    </iframe>
+@@ -143,13 +130,11 @@
   </div>
 </section>
 
+<!-- 02 — CERTIFICATIONS -->
 <section id="certifications">
   <div class="sec-head rv"><h2><b>02</b>Certifications &amp; formations</h2><span id="cert-count"></span></div>
+  <div class="cert-grid" id="cert-grid"><!-- généré par certifications.js --></div>
   <div class="cert-grid" id="cert-grid"></div>
 </section>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificat agrandi">
   <button class="close" id="lb-close" aria-label="Fermer">✕</button>
   <figure>
-    <img id="lb-img" src="" alt="">
-    <figcaption><span id="lb-title"></span><span id="lb-org"></span></figcaption>
-  </figure>
-</div>
-
-<footer>© 2026 Wongue Davy Cédric — CV &amp; Certifications</footer>
+@@ -162,11 +147,9 @@
 
 <script src="certifications.js"></script>
 <script>
+/* ---------- Reveal ---------- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.1});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 
+/* ---------- Galerie de certifications (config : certifications.js) ---------- */
 (function(){
   var grid=document.getElementById('cert-grid');
   var count=document.getElementById('cert-count');
-
-  if (!window.CERTIFICATIONS || !Array.isArray(window.CERTIFICATIONS)) {
-    count.textContent='00 documents';
-    return;
-  }
-
-  count.textContent=String(window.CERTIFICATIONS.length).padStart(2,'0')+' documents';
-
-  window.CERTIFICATIONS.forEach(function(c){
-    var card=document.createElement('article');
-    card.className='cert-card rv';
-    
-    // Ajouter les classes basées sur le statut preview
-    if (c.preview === true) {
-      card.classList.add('cert-preview');
-    } else {
-      card.classList.add('cert-available');
-    }
-
-    var thumb=document.createElement('div');
-    thumb.className='cert-thumb';
-
-    if (c.image) {
-      var img=document.createElement('img');
+@@ -190,15 +173,14 @@
       img.src='assets/certifications/' + c.image;
       img.alt='Certificat — ' + c.title;
       img.loading='lazy';
       if (c.preview === true) {
         img.classList.add('preview-blur');
       }
+      if (c.preview === true) img.classList.add('preview-blur');
       thumb.appendChild(img);
-      
-      // Si c'est une preview, ajouter le message "non disponible"
-      if (c.preview === true) {
-        var unavail=document.createElement('div');
-        unavail.className='cert-unavailable';
-        unavail.innerHTML='<p>Certificat non disponible en raison d\'un problème avec le code</p><small>mise à jour en cours</small>';
-        thumb.appendChild(unavail);
-      } else {
-        // Ajouter le click listener UNIQUEMENT si ce n'est pas une preview
-        card.addEventListener('click', function(){ openLb(c); });
-      }
+      card.addEventListener('click', function(){ openLb(c); });
     }
 
     var meta=document.createElement('div');
@@ -210,35 +125,18 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
     var h=document.createElement('h4'); h.textContent=c.title; meta.appendChild(h);
     var o=document.createElement('div'); o.className='org'; o.textContent=c.issuer; meta.appendChild(o);
 
-    if (c.date || c.expiry || c.status === 'en-cours') {
-      var d=document.createElement('span');
-      d.className='date';
-      d.textContent=(c.date ? 'Obtenu : ' + c.date : '') + (c.expiry ? ' · expire : ' + c.expiry : '') + (c.status === 'en-cours' ? 'En cours de validation' : '');
-      meta.appendChild(d);
-    }
-
-    if (c.verify) {
-      var v=document.createElement('a');
-      v.className='verify';
-      v.href=c.verify; v.target='_blank'; v.rel='noopener';
-      v.textContent='Vérifier l'authenticité ↗';
-      v.addEventListener('click', function(e){ e.stopPropagation(); });
-      meta.appendChild(v);
-    }
-
-    card.appendChild(thumb);
-    card.appendChild(meta);
-    grid.appendChild(card);
+@@ -224,28 +206,27 @@
     io.observe(card);
   });
 
+  /* Lightbox */
   var lb=document.getElementById('lightbox'),
       lbImg=document.getElementById('lb-img'),
       lbTitle=document.getElementById('lb-title'),
       lbOrg=document.getElementById('lb-org');
 
   window.openLb=function(c){
-    if (!c.image || c.preview === true) return;
+    if (!c.image) return;
     lbImg.src='assets/certifications/' + c.image;
     lbImg.alt='Certificat — ' + c.title;
     lbTitle.textContent=c.title;
@@ -256,6 +154,3 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
   lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
 })();
-</script>
-</body>
-</html>
