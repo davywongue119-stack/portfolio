@@ -38,6 +38,23 @@ nav .links a{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;marg
 .scroll-cue::after{content:'';display:block;width:1px;height:44px;background:var(--line);margin-top:.8rem;animation:drip 2.2s ease-in-out infinite;transform-origin:top}
 @keyframes drip{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 
+
+/* ---------- PORTRAIT ---------- */
+.hero-inner{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:3rem;align-items:center}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;gap:2.5rem}}
+.portrait-wrap{position:relative;justify-self:end}
+@media(max-width:860px){.portrait-wrap{justify-self:start;max-width:280px}}
+.portrait{position:relative;width:min(320px,68vw);aspect-ratio:4/5;overflow:hidden;border-radius:4px;
+  clip-path:inset(0 0 100% 0);animation:preveal 1.2s cubic-bezier(.22,1,.36,1) .3s forwards}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.35) contrast(1.03)}
+.portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(11,11,13,.55));pointer-events:none}
+@keyframes preveal{to{clip-path:inset(0 0 0% 0)}}
+.portrait-tag{position:absolute;bottom:-.9rem;left:-1.2rem;background:var(--bg);border:1px solid var(--line);
+  padding:.55rem 1rem;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mut);animation:fadein 1s ease 1.2s both}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.portrait-frame{position:absolute;top:-1rem;right:-1rem;width:5.5rem;height:5.5rem;border-top:1px solid var(--accent2);border-right:1px solid var(--accent2);opacity:.7}
+@media (prefers-reduced-motion:reduce){.portrait{clip-path:none;animation:none}.portrait-tag{animation:none;opacity:1}}
+
 /* ---------- MANIFESTE ---------- */
 .manifesto{padding:22vh 2rem;max-width:60rem;margin:0 auto}
 .manifesto p{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.35;color:var(--ink)}
@@ -113,18 +130,29 @@ footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-
 <nav>
   <div class="logo">WD<span style="color:var(--accent)">.</span></div>
   <div class="links">
-    <a href="#histoire">Histoire</a><a href="#competences">Index</a><a href="#contact">Contact</a>
+    <a href="#histoire">Histoire</a><a href="#competences">Index</a><a href="cv.html">Documents</a><a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
   <div class="kicker">CV Portfolio — 2019 → maintenant</div>
+  <div class="hero-inner">
+    <div>
   <h1>
     <span>Ingénieur</span>
     <span class="it">des procédés,</span>
     <span>une appétence pour la <em>finance.</em></span>
   </h1>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait">
+        <img src="assets/portrait.jpg" alt="Portrait professionnel de Wongue Davy Cédric, ingénieur des procédés candidat en asset management" width="374" height="467">
+      </div>
+      <span class="portrait-frame" aria-hidden="true"></span>
+      <span class="portrait-tag">Douala, Cameroun</span>
+    </div>
+  </div>
   <div class="meta">
     <div>Profil<b>Asset Manager Advisory · Finance</b></div>
     <div>Base<b>Douala, Cameroun</b></div>
@@ -252,7 +280,7 @@ footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-
   <div class="links rv">
     <a href="tel:+237698385430">+237 698 385 430</a>
     <a href="#">LinkedIn</a>
-    <a href="#">CV PDF</a>
+    <a href="cv.html">CV &amp; Certifications</a>
   </div>
   <div class="mob rv"><b>Permis B</b> · Mobilité nationale & internationale</div>
 </section>
