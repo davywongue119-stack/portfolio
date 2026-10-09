@@ -12,6 +12,7 @@
    image    : nom du fichier dans assets/certifications/
    pdf      : PDF associé (optionnel)
    verify   : lien de vérification officiel (optionnel)
+   status   : "en-cours" pour les formations en cours de validation
    preview  : true  => image représentative, floutée ou visuel stylisé
               false => image réelle nette
    ============================================================ */
@@ -42,6 +43,7 @@ var CERTIFICATIONS = [
     image: "bloomberg-bmc.jpg",
     pdf: "",
     verify: "",
+    status: "en-cours",
     preview: true
   },
   {
