@@ -49,7 +49,7 @@ section{padding:7rem 2rem;max-width:74rem;margin:0 auto}
 .cv-info ul{list-style:none;margin:1.6rem 0 2.4rem}
 .cv-info li{padding:.4rem 0 .4rem 1.2rem;position:relative;font-size:.95rem;color:var(--mut)}
 .cv-info li::before{content:'→';position:absolute;left:0;color:var(--accent2)}
-.btn{display:inline-block;margin:.4rem .8rem .4rem 0;padding:1rem 2.2rem;border:1px solid var(--line);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s;cursor:pointer;background:none;color:var(--ink);font-family:inherit}
+.btn{display:inline-block;margin:.4rem .8rem .4rem 0;padding:1rem 2.2rem;border:1px solid var(--line);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s;cursor:pointer;background:transparent;color:var(--ink)}
 .btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
 .btn.solid{background:var(--accent);border-color:var(--accent);color:#0b0b0d;font-weight:500}
 .btn.solid:hover{background:transparent;color:var(--accent)}
@@ -71,7 +71,7 @@ section{padding:7rem 2rem;max-width:74rem;margin:0 auto}
 .cert-thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:#16161b}
 .cert-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1)}
 .cert-card:hover .cert-thumb img{transform:scale(1.05)}
-.cert-thumb .blurred{filter:blur(14px) saturate(.6);transform:scale(1.15);opacity:.55}
+.cert-thumb img.preview-blur{filter:blur(4px) saturate(.7);opacity:.9}
 .cert-unavail{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;text-align:center;padding:1.4rem;background:rgba(11,11,13,.35)}
 .cert-unavail .lock{width:2.6rem;height:2.6rem;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--mut)}
 .cert-unavail p{font-size:.78rem;color:var(--ink);max-width:15rem;line-height:1.5}
@@ -80,7 +80,7 @@ section{padding:7rem 2rem;max-width:74rem;margin:0 auto}
 .cert-meta h4{font-family:'Instrument Serif',serif;font-weight:400;font-size:1.15rem;line-height:1.25;margin-bottom:.5rem}
 .cert-meta .org{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2)}
 .cert-meta .date{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--mut);margin-top:.55rem;display:block}
-.cert-meta .verify{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-block;margin-top:.7rem;border-bottom:1px solid rgba(200,240,74,.4);padding-bottom:.15rem}
+.cert-meta .verify{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-block;margin-top:.7rem;border-bottom:1px solid rgba(200,240,74,.4);padding-bottom:.12rem}
 .cert-meta .pending{display:inline-block;margin-top:.7rem;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:.2rem .7rem}
 
 /* ---------- LIGHTBOX ---------- */
@@ -89,14 +89,11 @@ section{padding:7rem 2rem;max-width:74rem;margin:0 auto}
 .lightbox figure{max-width:min(920px,94vw);max-height:88vh;display:flex;flex-direction:column}
 .lightbox img{max-width:100%;max-height:76vh;object-fit:contain;border:1px solid var(--line)}
 .lightbox figcaption{display:flex;justify-content:space-between;gap:1rem;padding:1rem .2rem;font-size:.78rem;color:var(--mut)}
-.lightbox .close{position:absolute;top:1.4rem;right:1.8rem;background:none;border:1px solid var(--line);color:var(--ink);width:2.8rem;height:2.8rem;border-radius:50%;cursor:pointer;font-size:1rem;transition:.3s}
+.lightbox .close{position:absolute;top:1.4rem;right:1.8rem;background:none;border:1px solid var(--line);color:var(--ink);width:2.8rem;height:2.8rem;border-radius:50%;cursor:pointer;font-size:1rem;transition:.25s}
 .lightbox .close:hover{border-color:var(--accent);color:var(--accent);transform:rotate(90deg)}
 
 /* ---------- HOW-TO ---------- */
-.howto{border:1px dashed var(--line);padding:2rem;margin-top:3rem;font-size:.82rem;color:var(--mut)}
-.howto code{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--accent2);background:rgba(125,214,194,.08);padding:.15rem .5rem}
-.howto ol{margin:.9rem 0 0 1.2rem}
-.howto li{margin:.45rem 0}
+.howto{display:none}
 
 footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);border-top:1px solid var(--line)}
 .rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
@@ -126,7 +123,7 @@ footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-
   <div class="cv-grid">
     <div class="cv-info rv">
       <h3>Un CV d'ingénieur,<br>orienté <em>finance.</em></h3>
-      <p>Ingénieur des procédés méthodique, analytique et rigoureux — certifié Bloomberg Market Concepts et en comptabilité financière (Université de Pennsylvanie). Six expériences industrielles, du terrain au système qualité.</p>
+      <p>Ingénieur des procédés méthodique, analytique et rigoureux — certifié Bloomberg Market Concepts et en comptabilité financière (Université de Pennsylvanie). Six expériences industrielles en maintenance, qualité et conduite de changement.</p>
       <ul>
         <li>PDF original, haute résolution de lecture</li>
         <li>Nom de fichier propre et professionnel</li>
@@ -153,15 +150,6 @@ footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-
 <section id="certifications">
   <div class="sec-head rv"><h2><b>02</b>Certifications &amp; formations</h2><span id="cert-count"></span></div>
   <div class="cert-grid" id="cert-grid"><!-- généré par certifications.js --></div>
-
-  <div class="howto rv">
-    <strong style="color:var(--ink)">Ajouter un certificat :</strong> déposez l'image (aperçu optimisé) et/ou le PDF dans <code>assets/certifications/</code>, puis renseignez ses métadonnées dans <code>assets/certifications.js</code>. Aucune base de données nécessaire.
-    <ol>
-      <li>Copier le fichier dans <code>assets/certifications/</code></li>
-      <li>Ajouter une entrée : <code>{ title, issuer, date, image, pdf, verify }</code></li>
-      <li>Pour un certificat provisoirement indisponible : <code>available: false</code></li>
-    </ol>
-  </div>
 </section>
 
 <!-- LIGHTBOX -->
@@ -194,25 +182,19 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
     var thumb=document.createElement('div');
     thumb.className='cert-thumb';
 
-    if(c.available && c.image){
+    if(c.image){
       var img=document.createElement('img');
       img.src='assets/certifications/'+c.image;
       img.alt='Certificat — '+c.title;
       img.loading='lazy';
+      if(c.preview === true){
+        img.classList.add('preview-blur');
+      }
       thumb.appendChild(img);
       if(c.pdf || c.image){
         card.addEventListener('click',function(){openLb(c);});
       }
     }else{
-      /* Espace réservé — certificat non encore disponible */
-      if(c.image){
-        var bimg=document.createElement('img');
-        bimg.src='assets/certifications/'+c.image;
-        bimg.alt='';
-        bimg.className='blurred';
-        bimg.setAttribute('aria-hidden','true');
-        thumb.appendChild(bimg);
-      }
       var un=document.createElement('div');
       un.className='cert-unavail';
       un.innerHTML='<span class="lock">◌</span><p>Certificat non encore disponible, pour des raisons indépendantes de notre volonté.</p><small>espace réservé</small>';
@@ -228,11 +210,9 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
     meta.appendChild(d);
     if(c.verify){
       var v=document.createElement('a');v.className='verify';v.href=c.verify;v.target='_blank';v.rel='noopener';
-      v.textContent='Vérifier l\u2019authenticité ↗';
+      v.textContent='Vérifier l’authenticité ↗';
       v.addEventListener('click',function(e){e.stopPropagation();});
       meta.appendChild(v);
-    }else if(!c.available){
-      var p=document.createElement('span');p.className='pending';p.textContent='document à venir';meta.appendChild(p);
     }
 
     card.appendChild(thumb);card.appendChild(meta);
